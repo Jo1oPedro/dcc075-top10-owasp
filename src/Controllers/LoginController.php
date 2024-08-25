@@ -17,10 +17,10 @@ class LoginController extends Controller
 
         if($user && password_verify($password, $user["password"])) {
             $_SESSION["user"] = $user;
-            header("Location: /bankAccounts");
+            redirect("/bankAccounts");
             exit;
         } else {
-            header("Location: /login");
+            redirect("/login");
         }
     }
 }
