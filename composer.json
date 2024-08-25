@@ -1,0 +1,23 @@
+{
+    "name": "dcc075/skeleton",
+    "type": "project",
+    "minimum-stability": "stable",
+    "license": "proprietary",
+    "autoload": {
+        "psr-4": {
+            "Security\\Skeleton\\": "src/"
+        },
+        "files": [
+            "Helpers/helper.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "João Pedro",
+            "email": "joao.pedreira@estudante.ufjf.br"
+        }
+    ],
+    "require-dev": {
+        "symfony/var-dumper": "^7.1"
+    }
+}

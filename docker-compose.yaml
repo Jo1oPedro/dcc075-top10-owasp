@@ -1,0 +1,39 @@
+services:
+
+  # mysql
+  banco_de_dados:
+    image: mysql:latest
+    ports:
+      - '3306:3306'
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: "secret"
+      MYSQL_USER: "user"
+      MYSQL_PASSWORD: "secret"
+      MYSQL_DATABASE: "seguranca"
+    volumes:
+      - ./docker/backup_banco_de_dados/database:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports:
+      - "8003:80"
+    volumes:
+      - ./docker/phpmyadmin/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php
+    environment:
+      #PMA_ARBITRARY: 1
+      PMA_HOST: banco_de_dados
+    depends_on:
+      - banco_de_dados
+
+  php:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      args:
+        PHP_VERSION: '8.3.3-bullseye'
+    volumes:
+      - ./:/var/www/app/
+    ports:
+      - "8080:8000"
