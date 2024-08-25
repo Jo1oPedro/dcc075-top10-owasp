@@ -3,7 +3,6 @@
 namespace Security\Skeleton\Controllers;
 
 use PDO;
-use Security\Skeleton\Http\Request;
 
 class LoginController extends Controller
 {
