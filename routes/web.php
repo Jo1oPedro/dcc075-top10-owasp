@@ -10,14 +10,23 @@ if($request->server['REQUEST_METHOD'] == 'GET') {
         case "/":
             try {
                 middleware(Authenticate::class);
+                header("Location: /bankAccounts");
             } catch (Exception $exception) {
-                require_once __DIR__ . "/../src/resources/views/login.php";
+                view("login");
+            }
+            break;
+        case "/bankAccounts":
+            try {
+                middleware(Authenticate::class, ParseQueryString::class);
+                (new BankController)->index();
+            } catch (Exception $exception) {
+                return;
             }
             break;
         case "/bankAccount":
             try {
-                middleware(ParseQueryString::class);
-                (new BankController)($request->server["PARSED_QUERY_STRING"]["id"]);
+                middleware(Authenticate::class, ParseQueryString::class);
+                (new BankController)->show($request->server["PARSED_QUERY_STRING"]["id"]);
             } catch (Exception $exception) {
                 return;
             }

@@ -4,7 +4,18 @@ namespace Security\Skeleton\Controllers;
 
 class BankController extends Controller
 {
-    public function __invoke(string $bankAccountId): void
+    public function index(): void
+    {
+        $user = $this->request->session["user"];
+        $stmt = $this->connection->prepare("SELECT * FROM bankAccounts WHERE user_id = ?");
+        $stmt->execute([$user["id"]]);
+        $results = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        view("bankAccounts", [
+            "results" => $results
+        ]);
+    }
+
+    public function show(string $bankAccountId): void
     {
         /**
          * To make a depency injection here, the user only need to pass OR 1=1 in the url
