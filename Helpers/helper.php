@@ -15,3 +15,8 @@ function view(string $path, array $variables = []): string {
     extract($variables);
     return require_once __DIR__ . "/../src/resources/views/{$path}.php";
 }
+
+function redirect(string $path): void {
+    header("Location: {$path}");
+    exit;
+}
