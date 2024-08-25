@@ -19,5 +19,7 @@ class RegisterController extends Controller
             redirect("/");
             exit;
         }
+        $_SESSION["errors"] = ["Email já cadastrado"];
+        redirect("/register");
     }
 }

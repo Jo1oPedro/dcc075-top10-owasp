@@ -1,6 +1,13 @@
 <?php view("templates/headers") ?>
 <body>
 <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+    <?php if(isset($_SESSION["errors"])): ?>
+        <?php foreach ($_SESSION["errors"] as $error): ?>
+            <div class="flex justify-center text-red-600 mb-2"><?php echo $error ?></div>
+        <?php endforeach ?>
+        <?php unset($_SESSION["errors"]); ?>
+    <?php endif; ?>
+    <div></div>
     <div class="sm:mx-auto sm:w-full sm:max-w-sm">
         <img class="mx-auto h-10 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company">
         <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Register your account</h2>
