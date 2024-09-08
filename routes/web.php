@@ -1,6 +1,7 @@
 <?php
 
 use Security\Skeleton\Controllers\BankController;
+use Security\Skeleton\Controllers\ForgetPasswordController;
 use Security\Skeleton\Controllers\LoginController;
 use Security\Skeleton\Controllers\RegisterController;
 use Security\Skeleton\Http\Middleware\Authenticate;
@@ -49,6 +50,15 @@ if($request->server['REQUEST_METHOD'] == 'GET') {
                 (new BankController)->show($request->server["PARSED_QUERY_STRING"]["id"]);
             } catch (Exception $exception) {
                 redirect("/login");
+                return;
+            }
+            break;
+        case "/forgot-password":
+            try {
+                middleware(Authenticate::class);
+                redirect("/");
+            } catch (Exception $exception) {
+                (new ForgetPasswordController())->
                 return;
             }
             break;
