@@ -6,7 +6,7 @@ use PDO;
 
 class LoginController extends Controller
 {
-    public function __invoke()
+    public function login()
     {
         $email = $this->request->post["email"];
         $password = $this->request->post["password"];
@@ -22,5 +22,11 @@ class LoginController extends Controller
         } else {
             redirect("/login");
         }
+    }
+
+    public function logout() {
+        unset($_SESSION["user"]);
+        redirect("/");
+        exit;
     }
 }

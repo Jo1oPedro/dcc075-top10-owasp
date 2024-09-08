@@ -1,4 +1,5 @@
 <?php view("templates/headers") ?>
+<?php view("templates/navbar") ?>
 <div class="flex w-full justify-center">
     <div class="flex flex-col container bg-gray-100">
         <h1 class="flex items-center justify-center">Dados da conta</h1>
