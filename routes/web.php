@@ -58,7 +58,16 @@ if($request->server['REQUEST_METHOD'] == 'GET') {
                 middleware(Authenticate::class);
                 redirect("/");
             } catch (Exception $exception) {
-                (new ForgetPasswordController())->
+                view("/recover-password");
+                return;
+            }
+            break;
+        case "/new-password":
+            try {
+                middleware(Authenticate::class);
+                redirect("/");
+            } catch (Exception $exception) {
+                view("/new-password");
                 return;
             }
             break;
@@ -87,6 +96,20 @@ if($request->server["REQUEST_METHOD"] == "POST") {
                 (new LoginController())->logout();
             } catch (Exception $exception) {
                 redirect("/");
+            }
+        case "/recover-password":
+            try {
+                middleware(Authenticate::class);
+                redirect("/");
+            } catch (Exception $exception) {
+                (new ForgetPasswordController())->forgotPassword();
+            }
+        case "/new-password":
+            try {
+                middleware(Authenticate::class);
+                redirect("/");
+            } catch (Exception $exception) {
+                (new ForgetPasswordController())->newPassword();
             }
     }
 }
