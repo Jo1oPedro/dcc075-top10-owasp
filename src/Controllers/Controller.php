@@ -9,10 +9,12 @@ abstract class Controller
 {
     protected \PDO $connection;
     protected Request $request;
+    protected \Redis $redis;
 
     public function __construct()
     {
         $this->connection = Connection::getConnection();
         $this->request = Request::getRequest();
+        $this->redis = \Security\Skeleton\Redis\Connection::getConnection();
     }
 }

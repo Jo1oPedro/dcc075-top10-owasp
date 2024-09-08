@@ -6,6 +6,7 @@ use Security\Skeleton\Controllers\LoginController;
 use Security\Skeleton\Controllers\RegisterController;
 use Security\Skeleton\Http\Middleware\Authenticate;
 use Security\Skeleton\Http\Middleware\ParseQueryString;
+use Security\Skeleton\Http\Middleware\RattingLimit;
 
 if($request->server['REQUEST_METHOD'] == 'GET') {
     switch ($request->server['PATH_INFO'] ?? "/") {
@@ -78,7 +79,7 @@ if($request->server["REQUEST_METHOD"] == "POST") {
     switch ($request->server["PATH_INFO"]) {
         case "/login":
             try {
-                middleware(Authenticate::class);
+                middleware(RattingLimit::class, Authenticate::class);
                 redirect("/");
             } catch (Exception $exception) {
                 (new LoginController())->login();
