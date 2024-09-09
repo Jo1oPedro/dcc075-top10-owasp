@@ -9,3 +9,11 @@
         </div>
     </div>
 </div>
+
+<div>
+    <h1>Importar suas notas fiscais</h1>
+    <form action="/bankAccount/importFromWeb" method="POST">
+        <input type="text" name="url" placeholder="URL">
+        <button type="submit">Importar</button>
+    </form>
+</div>

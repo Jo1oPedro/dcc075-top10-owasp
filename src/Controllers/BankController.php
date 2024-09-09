@@ -34,4 +34,12 @@ class BankController extends Controller
             "results" => $results
         ]);
     }
+
+    public function importFromWeb(string $url): void
+    {
+        $data = file_get_contents($url);
+        view("importFromWeb", [
+            "data" => $data
+        ]);
+    }
 }

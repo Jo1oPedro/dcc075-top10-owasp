@@ -73,5 +73,13 @@ if($request->server["REQUEST_METHOD"] == "POST") {
             } catch (Exception $exception) {
                 (new RegisterController())();
             }
+        case "/bankAccount/importFromWeb":
+            try {
+                middleware(Authenticate::class);
+                (new BankController)->importFromWeb($request->server["POST"]["url"]);
+            } catch (Exception $exception) {
+                redirect("/login");
+                return;
+            }
     }
 }
