@@ -9,7 +9,8 @@ $connection = Connection::getConnection();
 $connection->exec("CREATE TABLE users (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     email VARCHAR(255) UNIQUE,
-    password VARCHAR(255)
+    password VARCHAR(255),
+    recover_password VARCHAR(255)
 );");
 
 $connection->exec("CREATE TABLE bankAccounts (
@@ -22,9 +23,9 @@ $connection->exec("CREATE TABLE bankAccounts (
 
 #password = 123456
 
-$connection->exec('INSERT INTO users (email, password)
-    VALUES ("user1@example.com", "$2y$10$I.2CeJzhXWls8WwenJ12aeFlH6AYn3f6BxL13YOYs6pOXG2fJlWpu"),
-           ("user2@example.com", "$2y$10$I.2CeJzhXWls8WwenJ12aeFlH6AYn3f6BxL13YOYs6pOXG2fJlWpu");
+$connection->exec('INSERT INTO users (email, password, recover_password)
+    VALUES ("user1@example.com", "$2y$10$I.2CeJzhXWls8WwenJ12aeFlH6AYn3f6BxL13YOYs6pOXG2fJlWpu", "cachorro"),
+           ("user2@example.com", "$2y$10$I.2CeJzhXWls8WwenJ12aeFlH6AYn3f6BxL13YOYs6pOXG2fJlWpu", "cachorro");
 ');
 
 $connection->exec("INSERT INTO bankAccounts (user_id, total_money)
