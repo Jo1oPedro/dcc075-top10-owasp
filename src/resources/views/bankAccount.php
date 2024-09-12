@@ -10,6 +10,13 @@
 </head>
 
 <body class="bg-gray-100 font-sans">
+    <nav class="bg-blue-600 p-4 flex justify-between items-center">
+        <h1 class="text-white text-2xl font-bold">Bank Admin Panel</h1>
+        <form method="post" action="/logout">
+            <button type="submit" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-300" aria-label="Logout">Logout</button>
+        </form>
+    </nav>
+
     <div class="container mx-auto px-4 py-8 max-w-3xl">
         <h1 class="text-3xl font-bold text-gray-800 mb-8">Account Details</h1>
 
@@ -28,13 +35,13 @@
                     <h3 class="text-lg font-medium text-gray-600 mb-2">Account Creation Date</h3>
                     <div class="flex items-center">
                         <i class="far fa-calendar-alt text-blue-500 mr-2"></i>
-                        <span class="text-gray-800">"><?= $results["created_at"] ?></span>
+                        <span class="text-gray-800"><?= $results["created_at"] ?></span>
                     </div>
                 </div>
                 <div>
                     <h3 class="text-lg font-medium text-gray-600 mb-2">Owner's Email</h3>
                     <div class="flex items-center">
-                        <span class="text-gray-800 mr-2">"><?= $results["email"] ?></span>
+                        <span class="text-gray-800 mr-2"> <?= $results["email"] ?></span>
                         <button class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 transition duration-300 ease-in-out" onclick="copyEmail()">Copy</button>
                     </div>
                 </div>
