@@ -11,7 +11,9 @@
 <body class="bg-gray-100">
     <nav class="bg-blue-600 p-4 flex justify-between items-center">
         <h1 class="text-white text-2xl font-bold">Bank Admin Panel</h1>
-        <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-300" aria-label="Logout">Logout</button>
+        <form method="post" action="/logout">
+            <button type="submit" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-300" aria-label="Logout">Logout</button>
+        </form>
     </nav>
 
     <main class="container mx-auto mt-8 px-4">
