@@ -16,7 +16,7 @@
         <div class="bg-white rounded-lg shadow-md p-6 mb-8">
             <h2 class="text-2xl font-semibold text-gray-700 mb-4">Total Account Balance</h2>
             <div class="flex items-center justify-between">
-                <span class="text-4xl font-bold text-green-600"><?= $results["total_money"] ?></span>
+                <span class="text-4xl font-bold text-green-600">R$<?= $results["total_money"] ?>,00</span>
                 <i class="fas fa-arrow-up text-green-600 text-2xl"></i>
             </div>
         </div>
