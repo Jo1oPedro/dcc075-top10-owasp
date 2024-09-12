@@ -4,8 +4,8 @@ namespace Security\Skeleton\Redis;
 
 class Connection
 {
-    public static \Redis|null $instance = null;
-    public function __construct() {}
+    private static \Redis|null $instance = null;
+    private function __construct() {}
 
     public static function getConnection()
     {
