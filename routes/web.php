@@ -8,7 +8,7 @@ use Security\Skeleton\Http\Middleware\Authenticate;
 use Security\Skeleton\Http\Middleware\ParseQueryString;
 use Security\Skeleton\Http\Middleware\RattingLimit;
 
-if($request->server['REQUEST_METHOD'] == 'GET') {
+if ($request->server['REQUEST_METHOD'] == 'GET') {
     switch ($request->server['PATH_INFO'] ?? "/") {
         case "/":
             try {
@@ -19,23 +19,23 @@ if($request->server['REQUEST_METHOD'] == 'GET') {
             }
             break;
         case "/register": {
-            try {
-                middleware(Authenticate::class);
-                redirect("/");
-            } catch (Exception $exception) {
-                view("/register");
+                try {
+                    middleware(Authenticate::class);
+                    redirect("/");
+                } catch (Exception $exception) {
+                    view("/register");
+                }
+                break;
             }
-            break;
-        }
         case "/login": {
-            try {
-                middleware(Authenticate::class);
-                redirect("/");
-            } catch (Exception) {
-                view("login");
+                try {
+                    middleware(Authenticate::class);
+                    redirect("/");
+                } catch (Exception) {
+                    view("login");
+                }
+                break;
             }
-            break;
-        }
         case "/bankAccounts":
             try {
                 middleware(Authenticate::class, ParseQueryString::class);
@@ -75,7 +75,7 @@ if($request->server['REQUEST_METHOD'] == 'GET') {
     };
 }
 
-if($request->server["REQUEST_METHOD"] == "POST") {
+if ($request->server["REQUEST_METHOD"] == "POST") {
     switch ($request->server["PATH_INFO"]) {
         case "/login":
             try {
